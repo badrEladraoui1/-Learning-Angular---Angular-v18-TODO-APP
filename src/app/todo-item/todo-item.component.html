@@ -1,0 +1,15 @@
+<div class="p-5 text-xl font-mono text-blue-900">
+  <label
+    [ngStyle]="{
+      'text-decoration': todo.isCompleted ? 'line-through' : 'none'
+    }"
+  >
+    <input
+      type="checkbox"
+      [checked]="todo.isCompleted"
+      (click)="toggleChecking()"
+      name="isCompleted"
+    />
+    {{ todo.whatTodo }}
+  </label>
+</div>
