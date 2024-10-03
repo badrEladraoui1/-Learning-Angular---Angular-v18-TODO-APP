@@ -1,6 +1,14 @@
-<div class="flex flex-col border-2 border-purple-300 m-10">
+<div class="flex flex-col border-2 border-purple-400 m-10 rounded-lg">
   <h2 class="text-2xl text-center text-purple-500 p-3 font-bold">My Todo's</h2>
   @for(todo of todoList;track todo.id){
-  <app-todo-item (checkingTodo)="onTodoStatusChange($event)" [todo]="todo" />
+  <app-todo-item
+    (deletingTodo)="onTodoDelete($event)"
+    (checkingTodo)="onTodoStatusChange($event)"
+    [todo]="todo"
+  />
+  }@empty {
+  <p class="text-2xl text-center text-purple-400 p-3 font-bold">
+    Add New Todo's from above !!!
+  </p>
   }
 </div>

@@ -11,5 +11,11 @@
       name="isCompleted"
     />
     {{ todo.whatTodo }}
+    <button
+      class="text-red-500 font-bold bg-red-300 px-2 rounded-md ml-2"
+      (click)="deleteTodo()"
+    >
+      x
+    </button>
   </label>
 </div>

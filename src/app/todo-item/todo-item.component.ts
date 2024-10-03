@@ -11,9 +11,13 @@ import { Todo } from '../../types';
 })
 export class TodoItemComponent {
   @Output() checkingTodo = new EventEmitter<Todo>();
+  @Output() deletingTodo = new EventEmitter<Todo>();
 
   toggleChecking() {
     this.checkingTodo.emit(this.todo);
+  }
+  deleteTodo() {
+    this.deletingTodo.emit(this.todo);
   }
 
   @Input() todo!: Todo;

@@ -11,9 +11,14 @@ import { TodoItemComponent } from '../todo-item/todo-item.component';
 })
 export class TodoListComponent {
   @Output() todoStatusChanged = new EventEmitter<Todo>();
+  @Output() todoDelete = new EventEmitter<Todo>();
 
   onTodoStatusChange(todo: Todo) {
     this.todoStatusChanged.emit(todo);
+  }
+
+  onTodoDelete(todo: Todo) {
+    this.todoDelete.emit(todo);
   }
 
   @Input() todoList: Todo[] = [];

@@ -3,12 +3,12 @@ import { RouterOutlet } from '@angular/router';
 import { Todo } from '../types';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
-import id from '@angular/common/locales/id';
+import { TodoFilterComponent } from './todo-filter/todo-filter.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TodoListComponent, TodoFormComponent],
+  imports: [TodoListComponent, TodoFormComponent, TodoFilterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
@@ -49,5 +49,25 @@ export class AppComponent {
         item.id === todo.id ? { ...item, isCompleted: !item.isCompleted } : item
       )
     );
+  }
+
+  deletingTodo(todo: Todo) {
+    this.TodoList.update((list) => list.filter((item) => item.id !== todo.id));
+  }
+
+  onFilteringDone() {
+    this.TodoList.update((list) =>
+      list.filter((todo) => todo.isCompleted === true)
+    );
+  }
+
+  onFilteringTodos() {
+    this.TodoList.update((list) =>
+      list.filter((todo) => todo.isCompleted === false)
+    );
+  }
+
+  onResetingfilter() {
+    console.table(this.TodoList());
   }
 }

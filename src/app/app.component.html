@@ -4,7 +4,13 @@
   </h1>
   <article>
     <app-todo-form (newTodoAdded)="addNewTodo($event)" />
+    <app-todo-filter
+      (filterDone)="onFilteringDone()"
+      (filterTodos)="onFilteringTodos()"
+      (filterReset)="onResetingfilter()"
+    />
     <app-todo-list
+      (todoDelete)="deletingTodo($event)"
       (todoStatusChanged)="updatingInputCheck($event)"
       [todoList]="TodoList()"
     />
